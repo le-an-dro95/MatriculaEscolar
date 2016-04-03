@@ -92,5 +92,19 @@
   </Settings>
   <VirtualDirectory Name="src">
     <File Name="main.cpp"/>
+    <File Name="Usuario.h"/>
+    <File Name="Usuario.cpp"/>
+    <File Name="Data.cpp"/>
+    <File Name="Data.h"/>
+    <File Name="Endereco.cpp"/>
+    <File Name="Endereco.h"/>
+    <File Name="Professor.h"/>
+    <File Name="Professor.cpp"/>
+    <File Name="Secretario.h"/>
+    <File Name="Secretario.cpp"/>
+    <File Name="Aluno.h"/>
+    <File Name="Aluno.cpp"/>
+    <File Name="Disciplinas.h"/>
+    <File Name="Disciplinas.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>

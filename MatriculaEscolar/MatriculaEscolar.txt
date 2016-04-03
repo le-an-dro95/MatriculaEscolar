@@ -1,0 +1,1 @@
+./Debug/main.cpp.o ./Debug/Usuario.cpp.o ./Debug/Data.cpp.o ./Debug/Endereco.cpp.o ./Debug/Professor.cpp.o ./Debug/Secretario.cpp.o ./Debug/Aluno.cpp.o ./Debug/Disciplinas.cpp.o   
