@@ -1,6 +1,7 @@
 #ifndef SECRETARIO_H
 #define SECRETARIO_H
 #include "Usuario.h"
+#include "Disciplinas.h"
 #include <string>
 
 using namespace std;
@@ -26,6 +27,7 @@ private:
     string registro;
     string senha;
     string senhaMestra;
+    Disciplinas diciplinas;
 };
 
 #endif // SECRETARIO_H

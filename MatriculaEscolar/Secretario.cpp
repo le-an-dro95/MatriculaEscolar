@@ -92,5 +92,6 @@ void Secretario::cadastrarDisciplina()
 {
     system("cls");
     cout<<":: Cadastro de Disciplinas ::\n\n";
+    diciplinas.cadastrar();
     getch();
 }

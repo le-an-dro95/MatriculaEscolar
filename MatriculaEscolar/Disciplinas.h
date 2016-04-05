@@ -2,6 +2,7 @@
 #define DISCIPLINAS_H
 #include "Usuario.h"
 #include <string>
+#include <vector>
 
 using namespace std;
 
@@ -13,10 +14,12 @@ public:
     ~Disciplinas();
     
     void consultarDisciplina();
+    void cadastrarDisciplina();
     
 private:
     string codigo;
     string nome;
+    string *disciplinas;
 };
 
 #endif // DISCIPLINAS_H
