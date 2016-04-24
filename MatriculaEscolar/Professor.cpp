@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+
 using namespace std;
 
 Professor::Professor()
@@ -55,14 +56,15 @@ void Professor::apresentarMenu()
     do{
     system("cls");
     cout<<"::Bem Vindo::\n\n";
-    cout<<" 1 - Consultar Turmas \n 2 - Lancar Nota de Aluno \n 3 - Lancar Frequencia \n 4 - SAIR\n";
+    cout<<" 1 - Consultar Disciplinas \n 2 - Lancar Nota de Aluno \n 3 - Lancar Frequencia \n 4 - SAIR\n";
     cin>>op;
     switch(op)
     {
-        case '1': {consultarTurma(); break;}
+        case '1': {mostrarDisciplinas(); break;}
         case '2': {lancarNotaAluno(); break;}
         case '3': {lancarFrequencia(); break;}
         case '4': {resp='4'; break;}
+        case '5': {disciplinasprof.disciplinasCadastradas(); break;}
         default:  {resp='0'; break;}
     }
     }while (resp != "4");
@@ -86,5 +88,31 @@ void Professor::lancarFrequencia()
 {
     system("cls");
     cout<<":: Lancar frequencia :: \n\n";
+    getch();
+}
+
+
+string alldisciplinas[3];
+int qtd=0;
+
+void Professor::incluirDisciplina()
+{
+    string nDisciplina;
+    disciplinasprof.disciplinasCadastradas();
+    //cout<<"Digite: ";
+    //cin>>nDisciplina;
+    //nDisciplina = disciplinas.getDisciplina(2);
+    alldisciplinas[0] = nDisciplina;
+    alldisciplinas[1] = "Mersha";
+    alldisciplinas[2] = "esse";
+    qtd=3;
+}
+
+void Professor::mostrarDisciplinas()
+{
+    for(int i=0;i<qtd;i++)
+    {
+        cout<<" "<<i<<"-"<<" "<<alldisciplinas[i]<<"\n";
+    }
     getch();
 }

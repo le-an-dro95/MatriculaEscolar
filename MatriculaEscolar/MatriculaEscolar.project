@@ -106,5 +106,9 @@
     <File Name="Aluno.cpp"/>
     <File Name="Disciplinas.h"/>
     <File Name="Disciplinas.cpp"/>
+    <File Name="Alunos.h"/>
+    <File Name="Alunos.cpp"/>
+    <File Name="Professores.h"/>
+    <File Name="Professores.cpp"/>
   </VirtualDirectory>
 </CodeLite_Project>

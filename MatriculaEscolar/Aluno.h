@@ -10,7 +10,7 @@ class Aluno: public Usuario
      friend ostream &operator<<(ostream &, const Aluno &);
 public:
     Aluno();
-    Aluno(string, string);
+    Aluno(int, string);
     Aluno(const Aluno &);
     ~Aluno();
     
@@ -18,12 +18,14 @@ public:
     void consultarNotas();
     void consultarFrequencias();
     void consultarDisciplinas();
+    void cadastrar();
+    int getNumMatricula();
     
     bool operator==(const Aluno &) const;
     const Aluno &operator=(const Aluno &);
     
 private: 
-    string matricula;
+    int matricula=0;
 };
 
 #endif // ALUNO_H

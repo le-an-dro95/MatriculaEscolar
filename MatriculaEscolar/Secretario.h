@@ -2,6 +2,9 @@
 #define SECRETARIO_H
 #include "Usuario.h"
 #include "Disciplinas.h"
+#include "Alunos.h"
+#include "Professores.h"
+#include "Professor.h"
 #include <string>
 
 using namespace std;
@@ -19,6 +22,7 @@ public:
     void cadastrarAluno();
     void cadastrarProfesssor();
     void cadastrarDisciplina();
+    //void ligarDisciplinaProfessor();
 
     bool operator==(const Secretario &) const;
     const Secretario &operator=(const Secretario &);
@@ -27,7 +31,10 @@ private:
     string registro;
     string senha;
     string senhaMestra;
-    Disciplinas diciplinas;
+    Disciplinas disciplinas;
+    Alunos alunos;
+    Professores professores;
+    Professor professor;
 };
 
 #endif // SECRETARIO_H

@@ -1,10 +1,3 @@
-Debug/Disciplinas.cpp.o: Disciplinas.cpp Disciplinas.h Usuario.h Data.h \
- Endereco.h
+Debug/Disciplinas.cpp.o: Disciplinas.cpp Disciplinas.h
 
 Disciplinas.h:
-
-Usuario.h:
-
-Data.h:
-
-Endereco.h:

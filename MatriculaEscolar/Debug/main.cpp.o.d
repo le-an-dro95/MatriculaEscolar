@@ -1,5 +1,5 @@
 Debug/main.cpp.o: main.cpp Usuario.h Data.h Endereco.h Aluno.h \
- Professor.h Secretario.h Disciplinas.h
+ Professor.h Professores.h Alunos.h Disciplinas.h Secretario.h
 
 Usuario.h:
 
@@ -11,6 +11,10 @@ Aluno.h:
 
 Professor.h:
 
-Secretario.h:
+Professores.h:
+
+Alunos.h:
 
 Disciplinas.h:
+
+Secretario.h:

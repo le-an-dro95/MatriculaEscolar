@@ -6,12 +6,12 @@ using namespace std;
 
 Aluno::Aluno()
 {
-    matricula = "NomeUsuario";
+    matricula = 20;
     //senha = "0L@#";
 }
 
 
-Aluno::Aluno(string matricula, string senha)
+Aluno::Aluno(int matricula, string senha)
 {
     this->matricula=matricula;
     //this->senha=senha;

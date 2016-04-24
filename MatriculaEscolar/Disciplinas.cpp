@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <conio.h>
 
 using namespace std;
 
@@ -15,7 +16,7 @@ Disciplinas::~Disciplinas()
 {
 }
 
-void Disciplinas::consultarDisciplina()
+void Disciplinas::disciplinasCadastradas()
 {
     system("cls");
     if(qtddeDisciplinas!=0){
@@ -29,7 +30,7 @@ void Disciplinas::consultarDisciplina()
     getch();
 }
 
-/*void Disciplinas::cadastrarDisciplina(const string &nomeDisciplina)
+void Disciplinas::cadastrar(const string &nomeDisciplina)
 {
     if(qtddeDisciplinas!=0)
     {
@@ -42,10 +43,10 @@ void Disciplinas::consultarDisciplina()
     
     disciplinas = new string[++qtddeDisciplinas];
     
-    for(int i=0;i<qtddeLivros-1;i++)
+    for(int i=0;i<qtddeDisciplinas-1;i++)
         disciplinas[i] = aux[i];
         
-    disciplinas[qtddeLivros-1]= nomeDisciplina;
+    disciplinas[qtddeDisciplinas-1]= nomeDisciplina;
     
     delete [] aux;
     }
@@ -54,4 +55,10 @@ void Disciplinas::consultarDisciplina()
         this->disciplinas = new string[++qtddeDisciplinas];
         this->disciplinas[0] = nomeDisciplina;
     }
-}*\
+}
+
+string Disciplinas::getDisciplina(int nDisciplina)
+{
+    return this->disciplinas[nDisciplina];
+}
+
