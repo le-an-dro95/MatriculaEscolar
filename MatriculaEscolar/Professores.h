@@ -12,9 +12,11 @@ public:
     void cadastrar(const string &);
     int getNumMatricula();
     void professoresCadastrados();
+    string getNomeProfessor(int);
+    void pegarBancoDados();
     
 private:
-    string *professores;
+
 };
 
 #endif // PROFESSORES_H

@@ -86,3 +86,7 @@ void Aluno::consultarDisciplinas()
     cout<<":: Consultar Disciplinas :: \n\n";
     getch();
 }
+
+Aluno::~Aluno()
+{
+}

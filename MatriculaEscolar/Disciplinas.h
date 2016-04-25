@@ -2,6 +2,7 @@
 #define DISCIPLINAS_H
 #include <string>
 #include <vector>
+#include "Alunos.h"
 
 using namespace std;
 
@@ -15,11 +16,16 @@ public:
     void disciplinasCadastradas();
     void cadastrar(const string &);
     string getDisciplina(int);
+    void pegarBancoDados();
+    void detalharDisciplinas();
+    void matricularPartipantes(int, string);
+    void participantesdaDisciplina(int);
+    void proucurarProfessor(string);
     
 private:
     string codigo;
     string nome;
-    string *disciplinas;
+    Alunos alunos;
 };
 
 #endif // DISCIPLINAS_H

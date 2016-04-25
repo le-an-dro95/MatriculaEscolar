@@ -2,6 +2,7 @@
 #include <iostream>
 #include <string>
 #include <conio.h>
+#include <vector>
 using namespace std;
 
 
@@ -61,39 +62,72 @@ void Secretario::apresentarMenu()
     do{
     system("cls");
     cout<<"::Bem Vindo::\n\n";
-    cout<<" 1 - Cadastrar Aluno \n 2 - Consultar Alunos \n 3 - Cadastrar Professor \n 4 - Consutar Professores\n 5 - Cadastrar Disciplinas \n 6 - Consultar Disciplinas \n 7 - SAIR\n";
+    cout<<" 1 - Cadastrar Aluno \n 2 - Consultar Alunos \n 3 - Cadastrar Professor \n"; 
+    cout<<" 4 - Consutar Professores\n 5 - Cadastrar Disciplinas \n 6 - Consultar Disciplinas \n";
+    cout<<" 7 - ligar \n 8 - Matricular Aluno\n 9 - SAIR \n";
     cin>>op;
     switch(op)
     {
-        case '1': {cadastrarAluno(); break;}
+        //case '1': {cadastrarAluno(); break;}
+        case '1': {alunos.pegarBancoDados(); break;}
         case '2': {alunos.alunosCadastrados(); break;}
-        case '3': {cadastrarProfesssor(); break;}
+        //case '3': {cadastrarProfesssor(); break;}
+        case '3': {professores.pegarBancoDados(); break;}
         case '4': {professores.professoresCadastrados(); break;}
-        case '5': {cadastrarDisciplina(); break;}
+        //case '5': {cadastrarDisciplina(); break;}
+        case '5': {disciplinas.pegarBancoDados(); break;}
         case '6': {disciplinas.disciplinasCadastradas(); break;}
-        case '7': {resp='4'; break;}
+        case '7': {ligarDisciplinaProfessor(); break;}
+        case '8': {matricularAlunoDisciplina(); break;}
+        case '9': {resp='4'; break;}
         default:  {resp='0'; break;}
     }
     }while (resp != "4");
 }
-
 
 void Secretario::cadastrarAluno()
 {
     string nomeAluno;
     system("cls");
     cout<<":: Cadastro de Alunos ::\n\n";
-    /*
     cout<<"Nome: ";
     cin>>nomeAluno; 
-    aluno.cadastrar(nomeAluno);*/
-    alunos.cadastrar("LeandroSilva");
-    alunos.cadastrar("LeticiaSiva");
-    alunos.cadastrar("EduardoJunior");
-    alunos.cadastrar("OrlandoSilva");
-    alunos.cadastrar("LucifranceSIlva");
+    alunos.cadastrar(nomeAluno);
     cout<<"Aluno Cadastrado";
     getch();
+}
+
+void Secretario::matricularAlunoDisciplina()
+{
+    int indexAluno, nDisciplina;
+    string nomeAluno;
+    alunos.alunosCadastrados();
+    cout<<"Aluno: ";
+    cin>>indexAluno;
+    nomeAluno=alunos.getNomeAluno(indexAluno);
+    disciplinas.disciplinasCadastradas();
+    cout<<"Disciplina: ";
+    cin>>nDisciplina;
+    disciplinas.matricularPartipantes(nDisciplina, nomeAluno);
+}
+
+void Secretario::ligarDisciplinaProfessor()
+{
+    int indexProfessor, nDisciplina;
+    string nomeProfessor;
+    professores.professoresCadastrados();
+    cout<<"Professores: ";
+    cin>>indexProfessor;
+    nomeProfessor=professores.getNomeProfessor(indexProfessor);
+    disciplinas.disciplinasCadastradas();
+    cout<<"Disciplina: ";
+    cin>>nDisciplina;
+    disciplinas.matricularPartipantes(nDisciplina, nomeProfessor);
+}
+
+void Secretario::listadeAlunos()
+{
+    alunos.alunosCadastrados();
 }
 
 void Secretario::cadastrarProfesssor()
@@ -101,16 +135,9 @@ void Secretario::cadastrarProfesssor()
     string nomeProfessor;
     system("cls");
     cout<<":: Cadastro de Professor ::\n\n";
-    /*
     cout<<"Nome: ";
     cin>>nomeProfessor;
-    professor.cadastrar(nomeProfessor);
-    */
-    professores.cadastrar("Mauro");
-    professores.cadastrar("Claudormiro");
-    professores.cadastrar("Herminio");
-    professores.cadastrar("Regiane");
-    professores.cadastrar("Marcelle");
+    professores.cadastrar(nomeProfessor);
     cout<<"Professor Cadastrado";
     getch();
 }
@@ -120,29 +147,9 @@ void Secretario::cadastrarDisciplina()
     string nomeDisciplina;
     system("cls");
     cout<<":: Cadastro de Disciplinas ::\n\n";
-    /*
     cout<<"Nome da Disciplina: ";
     cin>>nomeDisciplina;
-    disciplina.cadastrarDisciplina(nomeDisciplina);
-     */
-    disciplinas.cadastrar("Banco_de_Dados");
-    disciplinas.cadastrar("Programacao_II");
-    disciplinas.cadastrar("Matematica_Computacional");
-    disciplinas.cadastrar("Sistemas_Operacionais");
-    disciplinas.cadastrar("Calculo_II");
+    disciplinas.cadastrar(nomeDisciplina);
     cout<<"Disciplina Cadastrada";
     getch();
 }
-
-/*
-void Secretario::ligarDisciplinaProfessor()
-{
-    int nProfessor, nDisciplina;
-    professores.professoresCadastrados();
-    cout<<"Digite o numero do Professor: ";
-    cin>>nProfessor;
-    disciplinas.disciplinasCadastradas();
-    cout<<"Digite o numero da Disciplina: ";
-    cin>>nDisciplina;
-
-}*/

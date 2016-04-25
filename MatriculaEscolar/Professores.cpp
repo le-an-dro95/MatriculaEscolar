@@ -1,9 +1,12 @@
 #include "Professores.h"
 #include <iostream>
 #include <conio.h>
+#include <vector>
 using namespace std;
 
 int qtddeProfessores=0;
+vector <string> professores;
+
 Professores::Professores()
 {
 }
@@ -14,38 +17,16 @@ Professores::~Professores()
 
 void Professores::cadastrar(const string &nomeProfessor)
 {
-    if(qtddeProfessores!=0)
-    {
-    string *aux = new string[qtddeProfessores];
-    
-    for(int i=0;i<qtddeProfessores;i++)
-        aux[i] = professores[i];
-    
-    delete [] professores;
-    
-    professores = new string[++qtddeProfessores];
-    
-    for(int i=0;i<qtddeProfessores-1;i++)
-        professores[i] = aux[i];
-        
-    professores[qtddeProfessores-1]= nomeProfessor;
-    
-    delete [] aux;
-    }
-     else
-    {
-        this->professores = new string[++qtddeProfessores];
-        this->professores[0] = nomeProfessor;
-    }
+    professores.push_back(nomeProfessor);
 }
 
 void Professores::professoresCadastrados()
 {
     system("cls");
-    if(qtddeProfessores!=0){
+    if(professores.size()!=0){
 
         cout<<"::: Professores Cadastrados ::: \n\n";
-        for(int i=0;i<qtddeProfessores;i++){
+        for(int i=0;i<professores.size();i++){
             cout<<""<<i<<"- "<<professores[i]<<"\n";
         }
     }
@@ -53,11 +34,17 @@ void Professores::professoresCadastrados()
     getch();
 }
 
-
-
-
-/*
-int Alunos::getNumMatricula()
+void Professores::pegarBancoDados() //Simulando que algumas disciplinas ja estão cadastrada em um banco de dados
 {
-    return this->matricula;
-}*/
+    professores.push_back("Herminio");
+    professores.push_back("Regiane");
+    professores.push_back("Mauro");
+    professores.push_back("Claudomiro");
+    professores.push_back("Constancia");
+}
+
+string Professores::getNomeProfessor(int indexProf)
+{
+    return professores[indexProf];
+}
+

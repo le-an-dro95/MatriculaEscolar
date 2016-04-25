@@ -13,7 +13,7 @@ class Professor: public Usuario
     friend ostream &operator<<(ostream &, const Professor &);
 public:
     Professor();
-    Professor(string, string);
+    Professor(int, string);
     Professor(const Professor &);
     ~Professor();
 
@@ -23,13 +23,14 @@ public:
     void lancarFrequencia();
     void incluirDisciplina();
     void mostrarDisciplinas();
+    void logar();
     
     bool operator==(const Professor &) const;
     const Professor &operator=(const Professor &);
     
 private:
 
-    string registro;
+    int indexProfessor;
     string senha;
     
     Disciplinas disciplinasprof;

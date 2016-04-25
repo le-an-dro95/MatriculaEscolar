@@ -1,10 +1,12 @@
 #include "Alunos.h"
 #include <iostream>
 #include <conio.h>
-
+#include <vector>
 using namespace std;
 
 int qtddeAlunos=0;
+vector <string> alunos;
+
 Alunos::Alunos()
 {
 }
@@ -15,46 +17,31 @@ Alunos::~Alunos()
 
 void Alunos::cadastrar(const string &nomeAluno)
 {
-    if(qtddeAlunos!=0)
-    {
-    string *aux = new string[qtddeAlunos];
-    
-    for(int i=0;i<qtddeAlunos;i++)
-        aux[i] = alunos[i];
-    
-    delete [] alunos;
-    
-    alunos = new string[++qtddeAlunos];
-    
-    for(int i=0;i<qtddeAlunos-1;i++)
-        alunos[i] = aux[i];
-        
-    alunos[qtddeAlunos-1]= nomeAluno;
-    
-    delete [] aux;
-    }
-     else
-    {
-        this->alunos = new string[++qtddeAlunos];
-        this->alunos[0] = nomeAluno;
-    }
+    alunos.push_back(nomeAluno);
 }
 
 void Alunos::alunosCadastrados()
 {
-    system("cls");
-    if(qtddeAlunos!=0){
+    if(alunos.size()!=0){
 
         cout<<"::: Alunos Cadastrados ::: \n\n";
-        for(int i=0;i<qtddeAlunos;i++){
+        for(int i=0;i<alunos.size();i++){
             cout<<""<<i<<"- "<<alunos[i]<<"\n";
         }
     }
     else cout<<"\nNao existe alunos cadastrados";
-    getch();
 }
 
-int Alunos::getNumMatricula()
+string Alunos::getNomeAluno(int indexAluno)
 {
-    return this->matricula;
+    return alunos[indexAluno];
+}
+
+void Alunos::pegarBancoDados()
+{
+    alunos.push_back("LeandroSilva");
+    alunos.push_back("LeticiaSiva");
+    alunos.push_back("EduardoJunior");
+    alunos.push_back("OrlandoSilva");
+    alunos.push_back("LucifranceSIlva");
 }

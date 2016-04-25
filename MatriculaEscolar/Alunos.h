@@ -10,12 +10,13 @@ public:
     Alunos();
     ~Alunos();
     void cadastrar(const string &);
-    int getNumMatricula();
+    string getNomeAluno(int);
     void alunosCadastrados();
+    void pegarBancoDados();
+    
 private:
 
 int matricula=0;
-string *alunos;
 };
 
 #endif // ALUNOS_H

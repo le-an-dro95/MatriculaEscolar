@@ -22,7 +22,9 @@ public:
     void cadastrarAluno();
     void cadastrarProfesssor();
     void cadastrarDisciplina();
-    //void ligarDisciplinaProfessor();
+    void listadeAlunos();
+    void ligarDisciplinaProfessor();
+    void matricularAlunoDisciplina();
 
     bool operator==(const Secretario &) const;
     const Secretario &operator=(const Secretario &);
@@ -34,7 +36,7 @@ private:
     Disciplinas disciplinas;
     Alunos alunos;
     Professores professores;
-    Professor professor;
+    //Professor professor;
 };
 
 #endif // SECRETARIO_H
