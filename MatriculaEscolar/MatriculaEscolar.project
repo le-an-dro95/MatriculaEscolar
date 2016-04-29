@@ -111,4 +111,6 @@
     <File Name="Professores.h"/>
     <File Name="Professores.cpp"/>
   </VirtualDirectory>
+  <Dependencies Name="Debug"/>
+  <Dependencies Name="Release"/>
 </CodeLite_Project>

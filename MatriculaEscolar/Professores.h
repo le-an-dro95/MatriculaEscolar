@@ -14,6 +14,7 @@ public:
     void professoresCadastrados();
     string getNomeProfessor(int);
     void pegarBancoDados();
+    int qtdProfessor();
     
 private:
 

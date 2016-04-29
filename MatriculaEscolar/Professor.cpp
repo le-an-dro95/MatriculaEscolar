@@ -53,7 +53,10 @@ void Professor::apresentarMenu()
 {  
     string resp;
     char op;
+    cout<<"Numero de Registro: ";
+    
     do{
+    cin>>indexProfessor;
     system("cls");
     cout<<"::Bem Vindo::\n\n";
     cout<<" 1 - Consultar Disciplinas Atuais \n 2 - Lancar Nota de Aluno \n 3 - Lancar Frequencia \n 4 - SAIR\n";
@@ -69,11 +72,22 @@ void Professor::apresentarMenu()
     }while (resp != "4");
 }
 
+void Professor::mostrarDisciplinas()
+{
+    string nomeProfessor;
+    nomeProfessor = professores.getNomeProfessor(indexProfessor);
+    disciplinasprof.proucurarDisciplinasDoProfessor(nomeProfessor);
+}
+
 void Professor::consultarTurma()
 {
+    int indexDisciplina;
     system("cls");
     cout<<":: Consultar Turma ::\n\n";
-    disciplinasprof.detalharDisciplinas();
+    mostrarDisciplinas();
+    cout<<"Digite o numero da disciplina";
+    cin>>indexDisciplina;
+    disciplinasprof.detalharDisciplinas(indexDisciplina);
     getch();
 }
 
@@ -91,23 +105,6 @@ void Professor::lancarFrequencia()
     getch();
 }
 
-
-string alldisciplinas[3];
-int qtd=0;
-
-/*void Professor::incluirDisciplina()
-{
-    string nDisciplina;
-    disciplinasprof.listadeAlunos();
-    //cout<<"Digite: ";
-    //cin>>nDisciplina;
-    //nDisciplina = disciplinas.getDisciplina(2);
-    alldisciplinas[0] = nDisciplina;
-    alldisciplinas[1] = "Mersha";
-    alldisciplinas[2] = "esse";
-    qtd=3;
-}*/
-
 void Professor::logar()
 {
     int indexProfessor;
@@ -118,10 +115,3 @@ void Professor::logar()
     cin>>senha;
 }
 
-void Professor::mostrarDisciplinas()
-{
-    string nomeProfessor;
-    nomeProfessor = professores.getNomeProfessor(indexProfessor);
-    disciplinasprof.proucurarProfessor(nomeProfessor);//mostra as disciplinas que esse professor está cadastrado.
-    getch();
-}

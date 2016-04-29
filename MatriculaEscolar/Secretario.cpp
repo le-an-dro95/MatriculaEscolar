@@ -18,7 +18,6 @@ Secretario::Secretario(string registro, string senhaMestre)
     this->registro=registro;
     this->senha=senha;
     this->senhaMestra=senhaMestra;
-    this->disciplinas=disciplinas;
 }
 
 Secretario::Secretario(const Secretario &outro):Usuario(outro)
@@ -58,29 +57,31 @@ bool Secretario::operator==(const Secretario &gente) const
 void Secretario::apresentarMenu()
 {
     string resp;
-    char op;
+    int op;
     do{
     system("cls");
     cout<<"::Bem Vindo::\n\n";
     cout<<" 1 - Cadastrar Aluno \n 2 - Consultar Alunos \n 3 - Cadastrar Professor \n"; 
     cout<<" 4 - Consutar Professores\n 5 - Cadastrar Disciplinas \n 6 - Consultar Disciplinas \n";
-    cout<<" 7 - ligar \n 8 - Matricular Aluno\n 9 - SAIR \n";
+    cout<<" 7 - Cadastrar Professor em Disciplina \n 8 - Matricular Aluno\n 9 - SAIR \n";
     cin>>op;
     switch(op)
     {
         //case '1': {cadastrarAluno(); break;}
-        case '1': {alunos.pegarBancoDados(); break;}
-        case '2': {alunos.alunosCadastrados(); break;}
+        case 1: {alunos.pegarBancoDados(); break;}
+        case 2: {alunos.alunosCadastrados(); break;}
         //case '3': {cadastrarProfesssor(); break;}
-        case '3': {professores.pegarBancoDados(); break;}
-        case '4': {professores.professoresCadastrados(); break;}
+        case 3: {professores.pegarBancoDados(); break;}
+        case 4: {professores.professoresCadastrados(); break;}
         //case '5': {cadastrarDisciplina(); break;}
-        case '5': {disciplinas.pegarBancoDados(); break;}
-        case '6': {disciplinas.disciplinasCadastradas(); break;}
-        case '7': {ligarDisciplinaProfessor(); break;}
-        case '8': {matricularAlunoDisciplina(); break;}
-        case '9': {resp='4'; break;}
+        case 5: {disciplinas.pegarBancoDados(); break;}
+        case 6: {disciplinas.disciplinasCadastradas(); break;}
+        case 7: {ligarDisciplinaProfessor(); break;}
+        case 8: {matricularAlunoDisciplina(); break;}
+        case 9: {resp='4'; break;}
+        case 10: {mostrarAlunosdaDisciplina(); break;} //pra testar;
         default:  {resp='0'; break;}
+ 
     }
     }while (resp != "4");
 }
@@ -99,36 +100,27 @@ void Secretario::cadastrarAluno()
 
 void Secretario::matricularAlunoDisciplina()
 {
-    int indexAluno, nDisciplina;
+    int indexAluno, indexDisciplina;
     string nomeAluno;
     alunos.alunosCadastrados();
-    cout<<"Aluno: ";
+    cout<<"Numero do Aluno: ";
     cin>>indexAluno;
     nomeAluno=alunos.getNomeAluno(indexAluno);
     disciplinas.disciplinasCadastradas();
     cout<<"Disciplina: ";
-    cin>>nDisciplina;
-    disciplinas.matricularPartipantes(nDisciplina, nomeAluno);
+    cin>>indexDisciplina;
+    disciplinas.matricularAlunoEmDisciplina(indexDisciplina, nomeAluno);
 }
 
-void Secretario::ligarDisciplinaProfessor()
+void Secretario::mostrarAlunosdaDisciplina()
 {
-    int indexProfessor, nDisciplina;
-    string nomeProfessor;
-    professores.professoresCadastrados();
-    cout<<"Professores: ";
-    cin>>indexProfessor;
-    nomeProfessor=professores.getNomeProfessor(indexProfessor);
+    int indexDisciplina;
     disciplinas.disciplinasCadastradas();
-    cout<<"Disciplina: ";
-    cin>>nDisciplina;
-    disciplinas.matricularPartipantes(nDisciplina, nomeProfessor);
-}
-
-void Secretario::listadeAlunos()
-{
-    alunos.alunosCadastrados();
-}
+    cout<<"Numero da Disciplina: ";
+    cin>>indexDisciplina;
+    disciplinas.listarAlunosDisciplina(indexDisciplina);
+    getch();
+}//não é daqui.. só pra testar.
 
 void Secretario::cadastrarProfesssor()
 {
@@ -149,7 +141,23 @@ void Secretario::cadastrarDisciplina()
     cout<<":: Cadastro de Disciplinas ::\n\n";
     cout<<"Nome da Disciplina: ";
     cin>>nomeDisciplina;
-    disciplinas.cadastrar(nomeDisciplina);
+    disciplinas.cadastrarDisciplina(nomeDisciplina);
     cout<<"Disciplina Cadastrada";
     getch();
+}
+
+void Secretario::ligarDisciplinaProfessor()
+{
+    int indexProfessor, indexDisciplina;
+    string nomeProfessor;
+    if(professores.qtdProfessor() == 0) 
+        return;
+    professores.professoresCadastrados();
+    cout<<"Numero do Professor que deseja: ";
+    cin>>indexProfessor;
+    nomeProfessor=professores.getNomeProfessor(indexProfessor);
+    disciplinas.disciplinasCadastradas();
+    cout<<"Disciplina: ";
+    cin>>indexDisciplina;
+    disciplinas.adicionarProfessorDisciplina(nomeProfessor,indexDisciplina);
 }

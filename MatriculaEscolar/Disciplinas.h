@@ -6,7 +6,6 @@
 
 using namespace std;
 
-
 class Disciplinas
 {
 public:
@@ -14,18 +13,30 @@ public:
     ~Disciplinas();
     
     void disciplinasCadastradas();
-    void cadastrar(const string &);
-    string getDisciplina(int);
+    void cadastrarDisciplina(const string &);
+    string getDisciplina();
     void pegarBancoDados();
-    void detalharDisciplinas();
-    void matricularPartipantes(int, string);
-    void participantesdaDisciplina(int);
-    void proucurarProfessor(string);
+    void detalharDisciplinas(int);
+    void matricularAlunoEmDisciplina(int, string);
+    void proucurarDisciplinasDoProfessor(string);
+    void matricularAlunosnaDisciplina(int);
+    void setDisciplinas(string);
+    void adicionarProfessor(string);
+    string getNomeProfessor();
+    void adicionarProfessorDisciplina(string, int);
+    void incluirNoVetorAluno(string);
+    void percorrerVetorAlunosDisciplina();
+    void listarAlunosDisciplina(int);
+    int qtdDeAlunosNaDisciplina(int);
+    int tamanhoDoVetorDisciplina();
     
 private:
-    string codigo;
-    string nome;
     Alunos alunos;
+    vector <string> alunosDisciplina;
+    string nomeDisciplina;
+    string nomeProfessor;
+    string aluno;
+
 };
 
 #endif // DISCIPLINAS_H

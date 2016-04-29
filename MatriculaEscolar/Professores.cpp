@@ -48,3 +48,7 @@ string Professores::getNomeProfessor(int indexProf)
     return professores[indexProf];
 }
 
+int Professores::qtdProfessor()
+{
+    return professores.size();
+}

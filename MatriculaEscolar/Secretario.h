@@ -25,6 +25,7 @@ public:
     void listadeAlunos();
     void ligarDisciplinaProfessor();
     void matricularAlunoDisciplina();
+    void mostrarAlunosdaDisciplina();
 
     bool operator==(const Secretario &) const;
     const Secretario &operator=(const Secretario &);

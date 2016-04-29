@@ -30,6 +30,7 @@ void Alunos::alunosCadastrados()
         }
     }
     else cout<<"\nNao existe alunos cadastrados";
+    getch();
 }
 
 string Alunos::getNomeAluno(int indexAluno)
@@ -44,4 +45,16 @@ void Alunos::pegarBancoDados()
     alunos.push_back("EduardoJunior");
     alunos.push_back("OrlandoSilva");
     alunos.push_back("LucifranceSIlva");
+    alunos.push_back("AnaMaria");
+    alunos.push_back("JorgeJunior");
+    alunos.push_back("ManuelSilva");
+    alunos.push_back("MariaSantos");
+    alunos.push_back("Toninha");
+    alunos.push_back("LordesSantos");
+    alunos.push_back("CristinaMonteiro");
+    alunos.push_back("TainaCastro");
+    alunos.push_back("SilvanyTrindade");
+    alunos.push_back("YanJose");
+    alunos.push_back("AntonioBandeiras");
+    alunos.push_back("Waldisnei");
 }
