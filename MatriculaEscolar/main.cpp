@@ -12,6 +12,7 @@ int main(int argc, char **argv)
 { 
     int tipo;
     do{
+    system("cls");
     cout<<"O que voce e? \n\n 1 - Secretario \n 2 - Professor \n 3 - Aluno \n 4 - SAIR\n\n";
     cin>>tipo;
     switch(tipo)

@@ -13,10 +13,21 @@ public:
     string getNomeAluno(int);
     void alunosCadastrados();
     void pegarBancoDados();
+    int qtdAlunos();
+    void setAlunos(string);
+    void lancarNotas(int);
+    string nomedoAluno();
+    void mostrarNotas(int);
+    void mostrarNotadoAluno();
+    void armazenarNotaAluno(double, double, double);
     
 private:
 
+string nomeAluno;
 int matricula=0;
+double priAv;
+double segAv;
+double terAv;
 };
 
 #endif // ALUNOS_H

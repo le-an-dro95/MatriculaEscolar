@@ -3,6 +3,7 @@
 #include <string>
 #include <vector>
 #include <conio.h>
+#include <cctype>
 using namespace std;
 
 const int maxAlunos=30;
@@ -39,15 +40,27 @@ string Disciplinas::getDisciplina()
 
 void Disciplinas::detalharDisciplinas(int indexDisciplina)
 {
-    int resp;
-    cout<<"Nome da Disciplina: "<<disciplinas[indexDisciplina].getDisciplina();
-    cout<<"Numero de Registro: "<<indexDisciplina;
-    cout<<"Professor: "<<disciplinas[indexDisciplina].getNomeProfessor();
-    cout<<"Quantidade de Alunos Matriculados: "<<qtdDeAlunosNaDisciplina(indexDisciplina);
-    cout<<"Visualizar Lista de Alunos? 1-sim, 0 - Sair\n\n";
-    if (resp==1) listarAlunosDisciplina(indexDisciplina);
-    else return;
-}//Falta testar..
+    system("cls");
+    int resp=0;
+    cout<<" \n ::: Dados de Disciplina ::: \n\n";
+    if(indexDisciplina<0 && indexDisciplina>qtddeDisciplinas) 
+    {
+        cout<<"Disciplina nao encontrada"; 
+    }
+    cout<<"\nNome da Disciplina: "<<disciplinas[indexDisciplina].getDisciplina();
+    cout<<"\nNumero de Registro: "<<indexDisciplina;
+    cout<<"\nProfessor: "<<disciplinas[indexDisciplina].getNomeProfessor();
+    if(qtdDeAlunosNaDisciplina(indexDisciplina)==0)
+    {
+        cout<<"\nNenhum Aluno Matriculado";
+        getch(); 
+        return;
+    }
+    cout<<"\nQuantidade de Alunos Matriculados: "<<qtdDeAlunosNaDisciplina(indexDisciplina);
+    cout<<"\nVisualizar Lista de Alunos? (1-sim, 0 - Sair): ";
+    cin>>resp;
+    if (resp==1) {listarAlunosDisciplina(indexDisciplina);}
+}
 
 void Disciplinas::disciplinasCadastradas()
 {
@@ -60,7 +73,6 @@ void Disciplinas::disciplinasCadastradas()
         }
     }
     else cout<<"\nNao existe disciplinas cadastradas";
-    getch();
 }
 
 void Disciplinas::pegarBancoDados() //Simulando que algumas disciplinas ja estão cadastrada em um banco de dados
@@ -102,8 +114,14 @@ void Disciplinas::percorrerVetorAlunosDisciplina()
 {
     system("cls");
     cout<<"---- Lista de Alunos da Disciplina ----\n\n";
+    if (alunosDisciplina.size()==0)
+    { 
+    cout<<"\n\nNao Existem Alunos Matriculados";
+    getch();
+    return;
+    }
     for(int i=0;i<alunosDisciplina.size();i++)
-        cout<<""<<i<<" - "<<alunosDisciplina[i]<<"\n";
+        {cout<<""<<i<<" - "<<alunosDisciplina[i]<<"\n";}
 }
 
 void Disciplinas::adicionarProfessorDisciplina(string nomeProfessor, int indexDisciplina)
@@ -123,13 +141,36 @@ string Disciplinas::getNomeProfessor()
 
 void Disciplinas::proucurarDisciplinasDoProfessor(string nomeProfessor)
 {
-    int numerar=0;
     for (int i=0;i<qtddeDisciplinas;i++)
     {
     if(disciplinas[i].getNomeProfessor()==nomeProfessor)
         { 
-        numerar=numerar+1;
-        cout<<" "<<numerar<<" - "<<disciplinas[i].getDisciplina()<<"\n";
+        cout<<" "<<i<<" - "<<disciplinas[i].getDisciplina()<<"\n";
         }
     }
+}
+
+void Disciplinas::procurarDisciplinasAluno(string nomeAluno)
+{
+    for (int i=0;i<qtddeDisciplinas;i++)
+        disciplinas[i].procurarAlunoemDisciplina(i, nomeAluno);
+}
+
+void Disciplinas::procurarAlunoemDisciplina(int indexDisciplina, string nomeAluno)
+{
+    for(int j=0;j<alunosDisciplina.size();j++)
+    {
+        if (alunosDisciplina[j] == nomeAluno)
+            cout<<" "<<indexDisciplina<<" - "<<nomeDisciplina<<"\n";
+    }
+}
+
+void Disciplinas::lancarNotadoAluno(int indexDisciplina,int indexAluno)
+{
+    disciplinas[indexDisciplina].chamarAlunos(indexAluno);
+}
+
+void Disciplinas::chamarAlunos(int indexAluno)
+{
+    alunos.lancarNotas(indexAluno);
 }

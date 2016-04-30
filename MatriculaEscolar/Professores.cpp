@@ -31,7 +31,6 @@ void Professores::professoresCadastrados()
         }
     }
     else cout<<"\nNao existe professores cadastrados";
-    getch();
 }
 
 void Professores::pegarBancoDados() //Simulando que algumas disciplinas ja estão cadastrada em um banco de dados

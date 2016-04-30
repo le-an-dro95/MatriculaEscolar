@@ -1,7 +1,7 @@
 #ifndef PROFESSOR_H
 #define PROFESSOR_H
 #include "Professores.h"
-#include "Alunos.h";
+#include "Alunos.h"
 #include "Disciplinas.h"
 #include "Usuario.h"
 #include <string>
@@ -18,7 +18,6 @@ public:
     ~Professor();
 
     virtual void apresentarMenu();
-    void consultarTurma();
     void lancarNotaAluno();
     void lancarFrequencia();
     void incluirDisciplina();

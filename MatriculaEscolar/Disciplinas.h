@@ -29,13 +29,17 @@ public:
     void listarAlunosDisciplina(int);
     int qtdDeAlunosNaDisciplina(int);
     int tamanhoDoVetorDisciplina();
+    void procurarDisciplinasAluno(string);
+    void procurarAlunoemDisciplina(int, string);
+    void lancarNotadoAluno(int,int);
+    void chamarAlunos(int);
     
 private:
     Alunos alunos;
     vector <string> alunosDisciplina;
+    //vector <double> notasAluno;
     string nomeDisciplina;
     string nomeProfessor;
-    string aluno;
 
 };
 
