@@ -17,15 +17,15 @@ public:
     Professor(const Professor &);
     ~Professor();
 
-    virtual void apresentarMenu();
+ 
     void lancarNotaAluno();
-    void lancarFrequencia();
-    void incluirDisciplina();
     void mostrarDisciplinas();
-    void logar();
     
     bool operator==(const Professor &) const;
     const Professor &operator=(const Professor &);
+ 
+    virtual void apresentarMenu();
+    static void logar();   
     
 private:
 

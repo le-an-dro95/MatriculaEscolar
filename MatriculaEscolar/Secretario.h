@@ -22,14 +22,18 @@ public:
     void cadastrarAluno();
     void cadastrarProfesssor();
     void cadastrarDisciplina();
-    void listadeAlunos();
     void ligarDisciplinaProfessor();
     void matricularAlunoDisciplina();
     void mostrarAlunosdaDisciplina();
     void detalharDisciplina();
+    void alocarSalaDisciplina();
 
+    static void listadeAlunos();
+    
     bool operator==(const Secretario &) const;
     const Secretario &operator=(const Secretario &);
+    
+    
 private:
 
     string registro;

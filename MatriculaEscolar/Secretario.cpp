@@ -63,7 +63,8 @@ void Secretario::apresentarMenu()
     cout<<"::Bem Vindo::\n\n";
     cout<<" 1 - Cadastrar Aluno \n 2 - Consultar Alunos \n 3 - Cadastrar Professor \n"; 
     cout<<" 4 - Consutar Professores\n 5 - Cadastrar Disciplinas \n 6 - Consultar Disciplinas \n";
-    cout<<" 7 - Cadastrar Professor em Disciplina \n 8 - Matricular Aluno \n 9 - Dados de Disciplina \n 10 - SAIR \n";
+    cout<<" 7 - Cadastrar Professor em Disciplina \n 8 - Matricular Aluno \n 9 - Dados de Disciplina \n";
+    cout<<" 10 - Alocar Sala Para Disciplina \n 11 - SAIR \n\n --> ";
     cin>>op;
     switch(op)
     {
@@ -79,19 +80,35 @@ void Secretario::apresentarMenu()
         case 7: {ligarDisciplinaProfessor(); break;}
         case 8: {matricularAlunoDisciplina(); break;}
         case 9: {detalharDisciplina(); break;} 
-        case 10: {resp='4'; break;}
+        case 10: {alocarSalaDisciplina(); break;}
+        case 11: {resp='4'; break;}
         default: {resp='0'; break;}
     }
     }while (resp != "4");
 }
 
+void Secretario::alocarSalaDisciplina()
+{
+    int indexDisciplina;
+    cout<<"Alocar Sala Para Disciplina\n\n";
+    disciplinas.disciplinasCadastradas();
+    if(disciplinas.qtdDisciplinas()==0) {getch(); return;}
+    cout<<"\nDigite a Disciplina: ";
+    cin>>indexDisciplina;
+    disciplinas.buscarSala(indexDisciplina);
+}
+
 void Secretario::detalharDisciplina()
 {
     int indexDisciplina;
+    do{
     disciplinas.disciplinasCadastradas();
+    if (disciplinas.qtdDisciplinas()==0) {getch(); return;}
     cout<<"\n\nNumero da Disciplina: ";
     cin>>indexDisciplina;
+    } while (indexDisciplina>disciplinas.qtdDisciplinas());
     disciplinas.detalharDisciplinas(indexDisciplina);
+    getch();
 }
 
 void Secretario::cadastrarAluno()
@@ -110,13 +127,19 @@ void Secretario::matricularAlunoDisciplina()
 {
     int indexAluno, indexDisciplina;
     string nomeAluno;
+    do{
     alunos.alunosCadastrados();
+    if (alunos.qtdAlunos()==0) {getch(); return;}
     cout<<"\n\nNumero do Aluno: ";
     cin>>indexAluno;
+    } while(indexAluno>alunos.qtdAlunos());
     nomeAluno=alunos.getNomeAluno(indexAluno);
+    do{
     disciplinas.disciplinasCadastradas();
+    if (disciplinas.qtdDisciplinas()==0) {getch(); return;}
     cout<<"\n\nDisciplina: ";
     cin>>indexDisciplina;
+    }while(indexDisciplina>disciplinas.qtdDisciplinas());
     disciplinas.matricularAlunoEmDisciplina(indexDisciplina, nomeAluno);
 }
 
@@ -158,14 +181,18 @@ void Secretario::ligarDisciplinaProfessor()
 {
     int indexProfessor, indexDisciplina;
     string nomeProfessor;
-    if(professores.qtdProfessor() == 0) 
-        return;
+    do{
     professores.professoresCadastrados();
+    if(professores.qtdProfessor() == 0) {getch(); return;}
     cout<<"\n\nNumero do Professor que deseja: ";
     cin>>indexProfessor;
+    } while (indexProfessor>professores.qtdProfessor());
     nomeProfessor=professores.getNomeProfessor(indexProfessor);
+    do{
     disciplinas.disciplinasCadastradas();
+    if(disciplinas.qtdDisciplinas()==0) {getch(); return;}
     cout<<"\n\nDisciplina: ";
     cin>>indexDisciplina;
+    }while(indexDisciplina>disciplinas.qtdDisciplinas());
     disciplinas.adicionarProfessorDisciplina(nomeProfessor,indexDisciplina);
 }

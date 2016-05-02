@@ -3,6 +3,8 @@
 #include <string>
 #include <conio.h>
 
+const int MAX_PROFESSORES = 30;
+
 using namespace std;
 
 Professor::Professor()
@@ -53,44 +55,55 @@ void Professor::apresentarMenu()
 {  
     system("cls");
     if (professores.qtdProfessor()==0) {cout<<"\n\n Nenhum Professor Cadastrado"; getch(); return;}
-    string resp;
+    int resp;
     int op;
+    do{
     cout<<"Numero de Registro: ";
     cin>>indexProfessor;
-    
+    }while(indexProfessor>professores.qtdProfessor());
     do{
-    resp = "1";
+    resp = 1;
     system("cls");
     cout<<"::Bem Vindo::\n\n";
-    cout<<" 1 - Consultar Disciplinas Atuais \n 2 - Lancar Nota de Aluno \n 3 - Lancar Frequencia \n 4 - SAIR\n";
+    cout<<" 1 - Consultar Disciplinas Atuais \n 2 - Lancar Nota de Aluno \n 3 - SAIR\n";
     cin>>op;
     switch(op)
     {
         case 1: {mostrarDisciplinas(); getch(); break;}
         case 2: {lancarNotaAluno(); break;}
-        case 3: {lancarFrequencia(); break;}
-        case 4: {resp='0'; break;}
-        default: {resp='0'; break;}
+        case 3: {resp= 0; break;}
+        default: {resp= 1; break;}
     }
-    }while (resp != "0");
+    }while (resp != 0);
 }
 
 void Professor::mostrarDisciplinas()
 {
+    do{
     system("cls");
     cout<<"\n ::: Lista de Disciplinas ::: \n\n";
     int resp, indexDisciplina;
     string nomeProfessor;
     nomeProfessor = professores.getNomeProfessor(indexProfessor);
-    disciplinasprof.proucurarDisciplinasDoProfessor(nomeProfessor);
+    if (disciplinasprof.procurarDisciplinasDoProfessor(nomeProfessor) == 0) {return;}
     cout<<"\nVisulizar Informacoes de Disciplina? (1 - Sim, 0 - SAIR): ";
     cin>>resp;
-    if(resp==1){
+    switch(resp){
+    case 1: 
+    {
         cout<<"\n\nNumero da Disciplina: ";
         cin>>indexDisciplina;
+        if (indexDisciplina>disciplinasprof.qtdDisciplinas()) {break;}
         disciplinasprof.detalharDisciplinas(indexDisciplina);
+        getch();
+        break;
     }
+    case 0: {return;}
+    default: {break;}
+    }
+    }while (1);
 }
+
 
 void Professor::lancarNotaAluno()
 {
@@ -99,20 +112,14 @@ void Professor::lancarNotaAluno()
     system("cls");
     cout<<":: Lancar Notas ::\n\n";
     nomeProfessor = professores.getNomeProfessor(indexProfessor);
-    disciplinasprof.proucurarDisciplinasDoProfessor(nomeProfessor);
-    cout<<"\nDisciplina: ";
+    if (disciplinasprof.procurarDisciplinasDoProfessor(nomeProfessor) == 0) {return;}
+    cout<<"\n\nDisciplina: ";
     cin>>indexDisciplina;
     disciplinasprof.listarAlunosDisciplina(indexDisciplina);
-    cout<<"Aluno: ";
+    if (disciplinasprof.qtdDeAlunosNaDisciplina(indexDisciplina)== 0){return;}
+    cout<<"\n\nAluno: ";
     cin>>indexAluno;
     disciplinasprof.lancarNotadoAluno(indexDisciplina,indexAluno);
-}
-
-void Professor::lancarFrequencia()
-{
-    system("cls");
-    cout<<":: Lancar frequencia :: \n\n";
-    getch();
 }
 
 void Professor::logar()

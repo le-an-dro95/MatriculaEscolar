@@ -1,18 +1,18 @@
 #ifndef ALUNOS_H
 #define ALUNOS_H
 #include <string>
-#include <vector>
 using namespace std;
 
 class Alunos
 {
 public:
     Alunos();
+    Alunos(string, double, double, double);
+    Alunos(const Alunos &);
     ~Alunos();
+    
     void cadastrar(const string &);
     string getNomeAluno(int);
-    void alunosCadastrados();
-    void pegarBancoDados();
     int qtdAlunos();
     void setAlunos(string);
     void lancarNotas(int);
@@ -20,14 +20,18 @@ public:
     void mostrarNotas(int);
     void mostrarNotadoAluno();
     void armazenarNotaAluno(double, double, double);
+    double get1av();
+    double get2av();
+    double get3av();
+    static void pegarBancoDados();
+    static void alunosCadastrados();
     
 private:
 
-string nomeAluno;
-int matricula=0;
-double priAv;
-double segAv;
-double terAv;
+    string nomeAluno;
+    double priAv;
+    double segAv;
+    double terAv;
 };
 
 #endif // ALUNOS_H

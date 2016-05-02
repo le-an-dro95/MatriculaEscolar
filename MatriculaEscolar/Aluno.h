@@ -17,21 +17,14 @@ public:
     Aluno(const Aluno &);
     ~Aluno();
     
-    virtual void apresentarMenu();
-    void consultarNotas();
-    void consultarFrequencias();
-    void consultarDisciplinas();
-    void cadastrar();
-    int getNumMatricula();
+    virtual void apresentarMenu()=0;
     
     bool operator==(const Aluno &) const;
     const Aluno &operator=(const Aluno &);
     
 private: 
-    int indexAluno;
-    Alunos alunos;
-    Disciplinas disciplinasdoAluno;
-    Professores professordoAluno;
+    
+    static int indexAluno;
 };
 
 #endif // ALUNO_H

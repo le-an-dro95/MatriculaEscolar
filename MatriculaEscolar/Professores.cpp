@@ -4,6 +4,7 @@
 #include <vector>
 using namespace std;
 
+
 int qtddeProfessores=0;
 vector <string> professores;
 
@@ -24,7 +25,7 @@ void Professores::professoresCadastrados()
 {
     system("cls");
     if(professores.size()!=0){
-
+        
         cout<<"::: Professores Cadastrados ::: \n\n";
         for(int i=0;i<professores.size();i++){
             cout<<""<<i<<"- "<<professores[i]<<"\n";
@@ -49,5 +50,8 @@ string Professores::getNomeProfessor(int indexProf)
 
 int Professores::qtdProfessor()
 {
-    return professores.size();
+    if (professores.size() == 0) return 0;
+    return professores.size()-1; 
+    //nao sei porque, mais só funcionou assim..
+    //tentei retornar apenas professores.size(), mas assim retorna o tamanho do vetor + 1.
 }

@@ -110,6 +110,10 @@
     <File Name="Alunos.cpp"/>
     <File Name="Professores.h"/>
     <File Name="Professores.cpp"/>
+    <File Name="AlunoGraduando.h"/>
+    <File Name="AlunoGraduando.cpp"/>
+    <File Name="AlunoGraduado.h"/>
+    <File Name="AlunoGraduado.cpp"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

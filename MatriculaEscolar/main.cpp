@@ -2,7 +2,8 @@
 #include <vector>
 #include <conio.h>
 #include "Usuario.h"
-#include "Aluno.h"
+#include "AlunoGraduado.h"
+#include "AlunoGraduando.h"
 #include "Professor.h"
 #include "Secretario.h"
 #include "Professores.h"
@@ -13,7 +14,7 @@ int main(int argc, char **argv)
     int tipo;
     do{
     system("cls");
-    cout<<"O que voce e? \n\n 1 - Secretario \n 2 - Professor \n 3 - Aluno \n 4 - SAIR\n\n";
+    cout<<"O que voce e? \n\n 1 - Secretario \n 2 - Professor \n 3 - Aluno Graduado(Finalizado) \n 4 - Aluno Graduando \n 5 - SAIR\n\n";
     cin>>tipo;
     switch(tipo)
     {
@@ -32,11 +33,17 @@ int main(int argc, char **argv)
         }
         case 3:
         {
-        Aluno alunos;
+        AlunoGraduado alunos;
         alunos.apresentarMenu();
         break;
         }
-        case 4: {tipo=-9999; break;}
+        case 4: 
+        {
+        AlunoGraduando alunos;
+        alunos.apresentarMenu();
+        break;
+        }
+        case 5: {tipo=-9999; break;}
     }
     }while(tipo!=-9999);
 }

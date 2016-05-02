@@ -10,15 +10,15 @@ class Disciplinas
 {
 public:
     Disciplinas();
+    Disciplinas(string, string);
+    Disciplinas(const Disciplinas &);
     ~Disciplinas();
     
-    void disciplinasCadastradas();
     void cadastrarDisciplina(const string &);
     string getDisciplina();
-    void pegarBancoDados();
     void detalharDisciplinas(int);
     void matricularAlunoEmDisciplina(int, string);
-    void proucurarDisciplinasDoProfessor(string);
+    int procurarDisciplinasDoProfessor(string);
     void matricularAlunosnaDisciplina(int);
     void setDisciplinas(string);
     void adicionarProfessor(string);
@@ -33,13 +33,23 @@ public:
     void procurarAlunoemDisciplina(int, string);
     void lancarNotadoAluno(int,int);
     void chamarAlunos(int);
+    int qtdDisciplinas();
+    void buscarNota(int);
+    void visualizarNota(int,int);
+    void buscarSala(int);
+    void adicionarSala(int);
+    int getNumeroSala();
+    void mostrarNumeroSala(int);
+    
+    static void pegarBancoDados();
+    static void disciplinasCadastradas();
     
 private:
     Alunos alunos;
     vector <string> alunosDisciplina;
-    //vector <double> notasAluno;
     string nomeDisciplina;
     string nomeProfessor;
+    int NumeroSala;
 
 };
 

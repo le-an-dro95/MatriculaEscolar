@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=ledri
-Date                   :=30/04/2016
+Date                   :=01/05/2016
 CodeLitePath           :="C:\Program Files\CodeLite"
 LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
@@ -63,7 +63,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
 Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Usuario.cpp$(ObjectSuffix) $(IntermediateDirectory)/Data.cpp$(ObjectSuffix) $(IntermediateDirectory)/Endereco.cpp$(ObjectSuffix) $(IntermediateDirectory)/Professor.cpp$(ObjectSuffix) $(IntermediateDirectory)/Secretario.cpp$(ObjectSuffix) $(IntermediateDirectory)/Aluno.cpp$(ObjectSuffix) $(IntermediateDirectory)/Disciplinas.cpp$(ObjectSuffix) $(IntermediateDirectory)/Alunos.cpp$(ObjectSuffix) $(IntermediateDirectory)/Professores.cpp$(ObjectSuffix) \
-	
+	$(IntermediateDirectory)/AlunoGraduando.cpp$(ObjectSuffix) $(IntermediateDirectory)/AlunoGraduado.cpp$(ObjectSuffix) 
 
 
 
@@ -173,6 +173,22 @@ $(IntermediateDirectory)/Professores.cpp$(DependSuffix): Professores.cpp
 
 $(IntermediateDirectory)/Professores.cpp$(PreprocessSuffix): Professores.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/Professores.cpp$(PreprocessSuffix) "Professores.cpp"
+
+$(IntermediateDirectory)/AlunoGraduando.cpp$(ObjectSuffix): AlunoGraduando.cpp $(IntermediateDirectory)/AlunoGraduando.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ledri/Desktop/Prog2/MatriculaEscolar/MatriculaEscolar/AlunoGraduando.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/AlunoGraduando.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/AlunoGraduando.cpp$(DependSuffix): AlunoGraduando.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/AlunoGraduando.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/AlunoGraduando.cpp$(DependSuffix) -MM "AlunoGraduando.cpp"
+
+$(IntermediateDirectory)/AlunoGraduando.cpp$(PreprocessSuffix): AlunoGraduando.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/AlunoGraduando.cpp$(PreprocessSuffix) "AlunoGraduando.cpp"
+
+$(IntermediateDirectory)/AlunoGraduado.cpp$(ObjectSuffix): AlunoGraduado.cpp $(IntermediateDirectory)/AlunoGraduado.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ledri/Desktop/Prog2/MatriculaEscolar/MatriculaEscolar/AlunoGraduado.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/AlunoGraduado.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/AlunoGraduado.cpp$(DependSuffix): AlunoGraduado.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/AlunoGraduado.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/AlunoGraduado.cpp$(DependSuffix) -MM "AlunoGraduado.cpp"
+
+$(IntermediateDirectory)/AlunoGraduado.cpp$(PreprocessSuffix): AlunoGraduado.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/AlunoGraduado.cpp$(PreprocessSuffix) "AlunoGraduado.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

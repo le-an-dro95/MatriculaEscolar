@@ -5,10 +5,32 @@
 using namespace std;
 
 int qtddeAlunos=0;
-Alunos alunos[20];
+const int MAX_ALUNOS=30;
+Alunos alunos[MAX_ALUNOS];
 
 Alunos::Alunos()
 {
+    this->nomeAluno="nomeAluno";
+    this->priAv=0;
+    this->segAv=0;
+    this->terAv=0;
+}
+
+Alunos::Alunos(string nomeAluno, double priAv, double segAv, double terAv)
+{
+    this->nomeAluno=nomeAluno;
+    this->priAv=priAv;
+    this->segAv=segAv;
+    this->terAv=terAv;
+}
+
+
+Alunos::Alunos(const Alunos &outroAluno)
+{
+    this->nomeAluno=outroAluno.nomeAluno;
+    this->priAv=outroAluno.priAv;
+    this->segAv=outroAluno.segAv;
+    this->terAv=outroAluno.terAv;
 }
 
 Alunos::~Alunos()
@@ -38,6 +60,7 @@ string Alunos::nomedoAluno()
 
 void Alunos::alunosCadastrados()
 {
+    system("cls");
     if(qtddeAlunos!=0){
 
         cout<<"::: Alunos Cadastrados ::: \n\n";
@@ -46,7 +69,6 @@ void Alunos::alunosCadastrados()
         }
     }
     else cout<<"\nNao existe alunos cadastrados";
-    getch();
 }
 
 void Alunos::pegarBancoDados()
@@ -73,17 +95,17 @@ void Alunos::pegarBancoDados()
 
 int Alunos::qtdAlunos()
 {
-    return qtddeAlunos;
+    if(qtddeAlunos==0) return 0;
+    else return qtddeAlunos-1;
 }
 
 void Alunos::lancarNotas(int indexAluno)
 {
-    double priAv, segAv, terAv;
-    cout<<"1Av: ";
+    cout<<"\nPrimeira Avaliacao: ";
     cin>>priAv;
-    cout<<"2Av: ";
+    cout<<"\nSegunda Avaliacao: ";
     cin>>segAv;
-    cout<<"3Av: ";
+    cout<<"Terceira Avaliacao: ";
     cin>>terAv;
     alunos[indexAluno].armazenarNotaAluno(priAv,segAv,terAv);
 }
@@ -102,8 +124,23 @@ void Alunos::mostrarNotas(int indexAluno)
 
 void Alunos::mostrarNotadoAluno()
 {
-    cout<<"Primeira Avalicao: "<<priAv;
-    cout<<"Segunda Avalicao: "<<segAv;
-    cout<<"Terceira Avalicao: "<<terAv;
+    cout<<"Primeira Avalicao: "<<get1av();
+    cout<<"\nSegunda Avalicao: "<<get2av();
+    cout<<"\nTerceira Avalicao: "<<get3av();
     getch();
+}
+
+double Alunos::get1av()
+{
+    return this->priAv;
+}
+
+double Alunos::get2av()
+{
+    return this->segAv;
+}
+
+double Alunos::get3av()
+{
+    return this->terAv;
 }

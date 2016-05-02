@@ -9,12 +9,12 @@ public:
     Professores();
     ~Professores();
     
-    void cadastrar(const string &);
-    int getNumMatricula();
     void professoresCadastrados();
     string getNomeProfessor(int);
-    void pegarBancoDados();
     int qtdProfessor();
+    
+    static void cadastrar(const string &);
+    static void pegarBancoDados();
     
 private:
 

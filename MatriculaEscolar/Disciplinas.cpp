@@ -3,24 +3,36 @@
 #include <string>
 #include <vector>
 #include <conio.h>
-#include <cctype>
+#include <stdlib.h> 
 using namespace std;
 
-const int maxAlunos=30;
+const int MAX_DISCIPLINAS=30;
 int qtddeDisciplinas=0;
 int qtddeAlunosDisciplina=0;
 
-Disciplinas disciplinas[10];
-
+Disciplinas disciplinas[MAX_DISCIPLINAS];
 
 Disciplinas::Disciplinas()
 {
+    this->nomeDisciplina="NomeDisciplina";
+    this->nomeProfessor="NomeProfessor";
+}
+
+Disciplinas::Disciplinas(string nomeDisciplina, string nomeProfessor)
+{
+    this->nomeDisciplina=nomeDisciplina;
+    this->nomeProfessor=nomeProfessor;
+}
+
+Disciplinas::Disciplinas(const Disciplinas &outraDisciplina)
+{
+    this->nomeDisciplina=outraDisciplina.nomeDisciplina;
+    this->nomeProfessor=outraDisciplina.nomeProfessor;
 }
 
 Disciplinas::~Disciplinas()
 {
 }
-
 
 void Disciplinas::cadastrarDisciplina(const string &nomeDisciplina)
 {
@@ -31,6 +43,12 @@ void Disciplinas::cadastrarDisciplina(const string &nomeDisciplina)
 void Disciplinas::setDisciplinas(string nomeDisciplina)
 {
     this->nomeDisciplina=nomeDisciplina;
+}
+
+int Disciplinas::qtdDisciplinas()
+{
+    if(qtddeDisciplinas==0) return 0;
+    else return qtddeDisciplinas-1;
 }
 
 string Disciplinas::getDisciplina()
@@ -50,6 +68,7 @@ void Disciplinas::detalharDisciplinas(int indexDisciplina)
     cout<<"\nNome da Disciplina: "<<disciplinas[indexDisciplina].getDisciplina();
     cout<<"\nNumero de Registro: "<<indexDisciplina;
     cout<<"\nProfessor: "<<disciplinas[indexDisciplina].getNomeProfessor();
+    cout<<"\nSala: "<<disciplinas[indexDisciplina].getNumeroSala();
     if(qtdDeAlunosNaDisciplina(indexDisciplina)==0)
     {
         cout<<"\nNenhum Aluno Matriculado";
@@ -95,6 +114,7 @@ void Disciplinas::incluirNoVetorAluno(string nomeAluno)
     this->alunosDisciplina.push_back(nomeAluno);
 } 
 
+
 void Disciplinas::listarAlunosDisciplina(int indexDisciplina)
 {
     disciplinas[indexDisciplina].percorrerVetorAlunosDisciplina();
@@ -120,8 +140,12 @@ void Disciplinas::percorrerVetorAlunosDisciplina()
     getch();
     return;
     }
-    for(int i=0;i<alunosDisciplina.size();i++)
-        {cout<<""<<i<<" - "<<alunosDisciplina[i]<<"\n";}
+    for(int i=0;i<alunosDisciplina.size();i++){
+        for(int j=0;j<alunos.qtdAlunos();j++){
+            if(alunosDisciplina[i] == alunos.getNomeAluno(j))
+            cout<<""<<j<<" - "<<alunosDisciplina[i]<<"\n";
+        }
+    }
 }
 
 void Disciplinas::adicionarProfessorDisciplina(string nomeProfessor, int indexDisciplina)
@@ -139,15 +163,17 @@ string Disciplinas::getNomeProfessor()
     return this->nomeProfessor;
 }
 
-void Disciplinas::proucurarDisciplinasDoProfessor(string nomeProfessor)
+int Disciplinas::procurarDisciplinasDoProfessor(string nomeProfessor)
 {
+    int achou=0;
     for (int i=0;i<qtddeDisciplinas;i++)
     {
-    if(disciplinas[i].getNomeProfessor()==nomeProfessor)
-        { 
+    if(disciplinas[i].getNomeProfessor()==nomeProfessor){
         cout<<" "<<i<<" - "<<disciplinas[i].getDisciplina()<<"\n";
-        }
+        achou+=1;
     }
+    }
+    if (achou==0) {cout<<"\n Nenhuma Disciplina \n"; getch(); return achou;}
 }
 
 void Disciplinas::procurarDisciplinasAluno(string nomeAluno)
@@ -173,4 +199,62 @@ void Disciplinas::lancarNotadoAluno(int indexDisciplina,int indexAluno)
 void Disciplinas::chamarAlunos(int indexAluno)
 {
     alunos.lancarNotas(indexAluno);
+}
+
+void Disciplinas::visualizarNota(int indexDisciplina, int indexAluno)
+{
+    disciplinas[indexDisciplina].buscarNota(indexAluno);
+}
+
+void Disciplinas::buscarNota(int indexAluno)
+{
+    alunos.mostrarNotadoAluno();
+}
+
+void Disciplinas::buscarSala(int indexDisciplina)
+{
+    int nturno, sala;
+    enum {manha=1,tarde, noite};
+    
+    cout<<"\n\nDigite o Turno: (1- manha, 2-tarde, 3-noite):";
+    cin>>nturno;
+    
+    if((nturno >= manha) && (nturno <= noite))
+    {
+    switch(nturno)
+    {
+    case manha:
+    {
+        sala = rand() % 5;
+        disciplinas[indexDisciplina].adicionarSala(sala);    
+        break;
+    }
+    case tarde:
+    {
+        sala = rand() % 5;
+        disciplinas[indexDisciplina].adicionarSala(sala);    
+        break;
+    }
+    case noite:
+    {
+        sala = rand() % 5;
+        disciplinas[indexDisciplina].adicionarSala(sala);    
+        break;
+    } 
+    } 
+    }  
+}
+
+void Disciplinas::adicionarSala(int NumeroSala)
+{
+    this->NumeroSala=NumeroSala;
+}
+void Disciplinas::mostrarNumeroSala(int indexDisciplina)
+{
+    cout<<" "<<disciplinas[indexDisciplina].getNumeroSala();
+}
+
+int Disciplinas::getNumeroSala()
+{
+    return this->NumeroSala;
 }
