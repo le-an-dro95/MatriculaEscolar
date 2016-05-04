@@ -13,7 +13,7 @@ CurrentFileName        :=
 CurrentFilePath        :=
 CurrentFileFullPath    :=
 User                   :=ledri
-Date                   :=01/05/2016
+Date                   :=04/05/2016
 CodeLitePath           :="C:\Program Files\CodeLite"
 LinkerName             :=C:/TDM-GCC-64/bin/g++.exe
 SharedObjectLinkerName :=C:/TDM-GCC-64/bin/g++.exe -shared -fPIC
@@ -63,7 +63,7 @@ AS       := C:/TDM-GCC-64/bin/as.exe
 ##
 CodeLiteDir:=C:\Program Files\CodeLite
 Objects0=$(IntermediateDirectory)/main.cpp$(ObjectSuffix) $(IntermediateDirectory)/Usuario.cpp$(ObjectSuffix) $(IntermediateDirectory)/Data.cpp$(ObjectSuffix) $(IntermediateDirectory)/Endereco.cpp$(ObjectSuffix) $(IntermediateDirectory)/Professor.cpp$(ObjectSuffix) $(IntermediateDirectory)/Secretario.cpp$(ObjectSuffix) $(IntermediateDirectory)/Aluno.cpp$(ObjectSuffix) $(IntermediateDirectory)/Disciplinas.cpp$(ObjectSuffix) $(IntermediateDirectory)/Alunos.cpp$(ObjectSuffix) $(IntermediateDirectory)/Professores.cpp$(ObjectSuffix) \
-	$(IntermediateDirectory)/AlunoGraduando.cpp$(ObjectSuffix) $(IntermediateDirectory)/AlunoGraduado.cpp$(ObjectSuffix) 
+	$(IntermediateDirectory)/AlunoGraduando.cpp$(ObjectSuffix) $(IntermediateDirectory)/AlunoGraduado.cpp$(ObjectSuffix) $(IntermediateDirectory)/DisciplinaGraduacao.cpp$(ObjectSuffix) $(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(ObjectSuffix) $(IntermediateDirectory)/AlunosGraduacao.cpp$(ObjectSuffix) $(IntermediateDirectory)/AlunosPosGraduacao.cpp$(ObjectSuffix) 
 
 
 
@@ -189,6 +189,38 @@ $(IntermediateDirectory)/AlunoGraduado.cpp$(DependSuffix): AlunoGraduado.cpp
 
 $(IntermediateDirectory)/AlunoGraduado.cpp$(PreprocessSuffix): AlunoGraduado.cpp
 	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/AlunoGraduado.cpp$(PreprocessSuffix) "AlunoGraduado.cpp"
+
+$(IntermediateDirectory)/DisciplinaGraduacao.cpp$(ObjectSuffix): DisciplinaGraduacao.cpp $(IntermediateDirectory)/DisciplinaGraduacao.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ledri/Desktop/Prog2/MatriculaEscolar/MatriculaEscolar/DisciplinaGraduacao.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/DisciplinaGraduacao.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/DisciplinaGraduacao.cpp$(DependSuffix): DisciplinaGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/DisciplinaGraduacao.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/DisciplinaGraduacao.cpp$(DependSuffix) -MM "DisciplinaGraduacao.cpp"
+
+$(IntermediateDirectory)/DisciplinaGraduacao.cpp$(PreprocessSuffix): DisciplinaGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/DisciplinaGraduacao.cpp$(PreprocessSuffix) "DisciplinaGraduacao.cpp"
+
+$(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(ObjectSuffix): DisciplinaPosGraduacao.cpp $(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ledri/Desktop/Prog2/MatriculaEscolar/MatriculaEscolar/DisciplinaPosGraduacao.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(DependSuffix): DisciplinaPosGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(DependSuffix) -MM "DisciplinaPosGraduacao.cpp"
+
+$(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(PreprocessSuffix): DisciplinaPosGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/DisciplinaPosGraduacao.cpp$(PreprocessSuffix) "DisciplinaPosGraduacao.cpp"
+
+$(IntermediateDirectory)/AlunosGraduacao.cpp$(ObjectSuffix): AlunosGraduacao.cpp $(IntermediateDirectory)/AlunosGraduacao.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ledri/Desktop/Prog2/MatriculaEscolar/MatriculaEscolar/AlunosGraduacao.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/AlunosGraduacao.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/AlunosGraduacao.cpp$(DependSuffix): AlunosGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/AlunosGraduacao.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/AlunosGraduacao.cpp$(DependSuffix) -MM "AlunosGraduacao.cpp"
+
+$(IntermediateDirectory)/AlunosGraduacao.cpp$(PreprocessSuffix): AlunosGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/AlunosGraduacao.cpp$(PreprocessSuffix) "AlunosGraduacao.cpp"
+
+$(IntermediateDirectory)/AlunosPosGraduacao.cpp$(ObjectSuffix): AlunosPosGraduacao.cpp $(IntermediateDirectory)/AlunosPosGraduacao.cpp$(DependSuffix)
+	$(CXX) $(IncludePCH) $(SourceSwitch) "C:/Users/ledri/Desktop/Prog2/MatriculaEscolar/MatriculaEscolar/AlunosPosGraduacao.cpp" $(CXXFLAGS) $(ObjectSwitch)$(IntermediateDirectory)/AlunosPosGraduacao.cpp$(ObjectSuffix) $(IncludePath)
+$(IntermediateDirectory)/AlunosPosGraduacao.cpp$(DependSuffix): AlunosPosGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) -MG -MP -MT$(IntermediateDirectory)/AlunosPosGraduacao.cpp$(ObjectSuffix) -MF$(IntermediateDirectory)/AlunosPosGraduacao.cpp$(DependSuffix) -MM "AlunosPosGraduacao.cpp"
+
+$(IntermediateDirectory)/AlunosPosGraduacao.cpp$(PreprocessSuffix): AlunosPosGraduacao.cpp
+	@$(CXX) $(CXXFLAGS) $(IncludePCH) $(IncludePath) $(PreprocessOnlySwitch) $(OutputSwitch) $(IntermediateDirectory)/AlunosPosGraduacao.cpp$(PreprocessSuffix) "AlunosPosGraduacao.cpp"
 
 
 -include $(IntermediateDirectory)/*$(DependSuffix)

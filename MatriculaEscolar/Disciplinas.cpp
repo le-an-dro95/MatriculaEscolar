@@ -56,31 +56,6 @@ string Disciplinas::getDisciplina()
     return this->nomeDisciplina;
 }
 
-void Disciplinas::detalharDisciplinas(int indexDisciplina)
-{
-    system("cls");
-    int resp=0;
-    cout<<" \n ::: Dados de Disciplina ::: \n\n";
-    if(indexDisciplina<0 && indexDisciplina>qtddeDisciplinas) 
-    {
-        cout<<"Disciplina nao encontrada"; 
-    }
-    cout<<"\nNome da Disciplina: "<<disciplinas[indexDisciplina].getDisciplina();
-    cout<<"\nNumero de Registro: "<<indexDisciplina;
-    cout<<"\nProfessor: "<<disciplinas[indexDisciplina].getNomeProfessor();
-    cout<<"\nSala: "<<disciplinas[indexDisciplina].getNumeroSala();
-    if(qtdDeAlunosNaDisciplina(indexDisciplina)==0)
-    {
-        cout<<"\nNenhum Aluno Matriculado";
-        getch(); 
-        return;
-    }
-    cout<<"\nQuantidade de Alunos Matriculados: "<<qtdDeAlunosNaDisciplina(indexDisciplina);
-    cout<<"\nVisualizar Lista de Alunos? (1-sim, 0 - Sair): ";
-    cin>>resp;
-    if (resp==1) {listarAlunosDisciplina(indexDisciplina);}
-}
-
 void Disciplinas::disciplinasCadastradas()
 {
     system("cls");
@@ -92,16 +67,6 @@ void Disciplinas::disciplinasCadastradas()
         }
     }
     else cout<<"\nNao existe disciplinas cadastradas";
-}
-
-void Disciplinas::pegarBancoDados() //Simulando que algumas disciplinas ja estão cadastrada em um banco de dados
-{
-    disciplinas[0].setDisciplinas("Matematica_Computacional");
-    disciplinas[1].setDisciplinas("Sistemas_Operacionais");
-    disciplinas[2].setDisciplinas("Programacao_II");
-    disciplinas[3].setDisciplinas("Calculo_II");
-    disciplinas[4].setDisciplinas("Programacao_I");
-    qtddeDisciplinas=5;
 }
 
 void Disciplinas::matricularAlunoEmDisciplina(int indexDisciplina, string nomeAluno)
@@ -176,18 +141,25 @@ int Disciplinas::procurarDisciplinasDoProfessor(string nomeProfessor)
     if (achou==0) {cout<<"\n Nenhuma Disciplina \n"; getch(); return achou;}
 }
 
-void Disciplinas::procurarDisciplinasAluno(string nomeAluno)
+int Disciplinas::procurarDisciplinasAluno(string nomeAluno)
 {
+    int achou;
     for (int i=0;i<qtddeDisciplinas;i++)
-        disciplinas[i].procurarAlunoemDisciplina(i, nomeAluno);
+        if (disciplinas[i].procurarAlunoemDisciplina(i, nomeAluno)!=0) {achou=achou+1;}
+    return achou;
 }
 
-void Disciplinas::procurarAlunoemDisciplina(int indexDisciplina, string nomeAluno)
+int Disciplinas::procurarAlunoemDisciplina(int indexDisciplina, string nomeAluno)
 {
+    int achou;
     for(int j=0;j<alunosDisciplina.size();j++)
     {
         if (alunosDisciplina[j] == nomeAluno)
+        {
             cout<<" "<<indexDisciplina<<" - "<<nomeDisciplina<<"\n";
+            achou=achou+1;
+            return achou;
+        }
     }
 }
 
@@ -208,7 +180,7 @@ void Disciplinas::visualizarNota(int indexDisciplina, int indexAluno)
 
 void Disciplinas::buscarNota(int indexAluno)
 {
-    alunos.mostrarNotadoAluno();
+    alunos.mostrarNotas(indexAluno);
 }
 
 void Disciplinas::buscarSala(int indexDisciplina)
@@ -241,8 +213,8 @@ void Disciplinas::buscarSala(int indexDisciplina)
         disciplinas[indexDisciplina].adicionarSala(sala);    
         break;
     } 
-    } 
-    }  
+    }
+ }  
 }
 
 void Disciplinas::adicionarSala(int NumeroSala)

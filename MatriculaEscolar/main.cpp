@@ -6,29 +6,50 @@
 #include "AlunoGraduando.h"
 #include "Professor.h"
 #include "Secretario.h"
-#include "Professores.h"
 #include <iostream>
 
 int main(int argc, char **argv)
 { 
+    vector <Usuario*> pessoas;//vector para estanciar mais de uma pessoa
+    
+    pessoas.push_back(new Secretario);
+    pessoas.push_back(new AlunoGraduando);
+    pessoas.push_back(new Professor);
+    pessoas.push_back(new AlunoGraduado);
+    pessoas.push_back(new Secretario);
+    
+    
+    for(int i=0; i<pessoas.size();i++)
+    {
+        pessoas[i]->logarNoSistema();
+        
+        AlunoGraduando * alunoGraduandoPtr = dynamic_cast<AlunoGraduando *>(pessoas[i]);
+        if (alunoGraduandoPtr != 0) 
+        {
+            system("cls");
+            cout<<"\nLista de Livros: \n\n";
+            alunoGraduandoPtr->consultarDisciplinas();
+        }
+    }
+    
+    
     int tipo;
     do{
     system("cls");
-    cout<<"O que voce e? \n\n 1 - Secretario \n 2 - Professor \n 3 - Aluno Graduado(Finalizado) \n 4 - Aluno Graduando \n 5 - SAIR\n\n";
+    cout<<":::Bem Vindo:: \n\n 1 - Secretario \n 2 - Professor \n 3 - Aluno Graduado(Finalizado) \n 4 - Aluno Graduando \n 5 - SAIR\n\n";
     cin>>tipo;
     switch(tipo)
     {
         case 1:
         {
         Secretario sec;
-        Professores professores;
-        sec.apresentarMenu();
+        sec.logarNoSistema();
         break;
         }
         case 2:
         {
         Professor prof;
-        prof.apresentarMenu();
+        prof.logarNoSistema();
         break;
         }
         case 3:
@@ -40,7 +61,7 @@ int main(int argc, char **argv)
         case 4: 
         {
         AlunoGraduando alunos;
-        alunos.apresentarMenu();
+        alunos.logarNoSistema();
         break;
         }
         case 5: {tipo=-9999; break;}

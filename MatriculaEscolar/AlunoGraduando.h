@@ -2,7 +2,7 @@
 #define ALUNOGRADUANDO_H
 #include "Aluno.h"
 #include "Alunos.h"
-#include "Disciplinas.h"
+#include "DisciplinaGraduacao.h"
 #include "Professores.h"
 #include <iostream>
 #include <string>
@@ -24,11 +24,12 @@ public:
     const AlunoGraduando &operator=(const AlunoGraduando &);
     
     virtual void apresentarMenu();
+    virtual void logarNoSistema();
     
 private:
     int indexAluno;
     Alunos alunos;
-    Disciplinas disciplinasdoAluno;
+    DisciplinaGraduacao disciplinasdoAluno;
     Professores professordoAluno;
 
 };

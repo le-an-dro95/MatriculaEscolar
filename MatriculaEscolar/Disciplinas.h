@@ -29,8 +29,8 @@ public:
     void listarAlunosDisciplina(int);
     int qtdDeAlunosNaDisciplina(int);
     int tamanhoDoVetorDisciplina();
-    void procurarDisciplinasAluno(string);
-    void procurarAlunoemDisciplina(int, string);
+    int procurarDisciplinasAluno(string);
+    int procurarAlunoemDisciplina(int, string);
     void lancarNotadoAluno(int,int);
     void chamarAlunos(int);
     int qtdDisciplinas();
@@ -41,7 +41,7 @@ public:
     int getNumeroSala();
     void mostrarNumeroSala(int);
     
-    static void pegarBancoDados();
+    virtual void pegarBancoDados()=0;
     static void disciplinasCadastradas();
     
 private:

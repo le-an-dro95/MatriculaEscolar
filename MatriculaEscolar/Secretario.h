@@ -1,7 +1,7 @@
 #ifndef SECRETARIO_H
 #define SECRETARIO_H
 #include "Usuario.h"
-#include "Disciplinas.h"
+#include "DisciplinaGraduacao.h"
 #include "Alunos.h"
 #include "Professores.h"
 #include "Professor.h"
@@ -14,7 +14,7 @@ class Secretario: public Usuario
     friend ostream &operator<<(ostream &, const Secretario &);
 public:
     Secretario();
-    Secretario(string, string);
+    Secretario(int, string);
     Secretario(const Secretario &);
     ~Secretario();
     
@@ -27,6 +27,8 @@ public:
     void mostrarAlunosdaDisciplina();
     void detalharDisciplina();
     void alocarSalaDisciplina();
+    
+    virtual void logarNoSistema();
 
     static void listadeAlunos();
     
@@ -36,10 +38,10 @@ public:
     
 private:
 
-    string registro;
+    int registro;
     string senha;
     string senhaMestra;
-    Disciplinas disciplinas;
+    DisciplinaGraduacao disciplinas;
     Alunos alunos;
     Professores professores;
     //Professor professor;

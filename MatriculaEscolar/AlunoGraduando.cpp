@@ -47,15 +47,28 @@ AlunoGraduando::~AlunoGraduando()
 {
 }
 
-void AlunoGraduando::apresentarMenu()
+void AlunoGraduando::logarNoSistema()
 {
+    string senha;
     system("cls");
     if (alunos.qtdAlunos()==0) {cout<<"\n\n Nenhum Aluno Cadastrado"; getch(); return;}
+    cout<<"Numero de Matricula: ";
+    cin>>indexAluno;
+    cout<<"Senha: ";
+    cin>>senha;
+    if (indexAluno<alunos.qtdAlunos() && senha == "123")
+        apresentarMenu();
+    else{
+        cout<<"Numero de Registro e/ou senha Incorreta";
+        getch();
+        return;
+    }
+}
+
+void AlunoGraduando::apresentarMenu()
+{
     int resp;
     int op;
-    cout<<"Numero de Registro: ";
-    cin>>indexAluno;
-    
     do{
     resp=99;
     system("cls");
@@ -81,7 +94,8 @@ void AlunoGraduando::consultarNotas()
     system("cls");
     cout<<":: Consultar Notas :: \n\n";
     nomeAluno = alunos.getNomeAluno(indexAluno);
-    disciplinasdoAluno.procurarDisciplinasAluno(nomeAluno);
+    if (disciplinasdoAluno.procurarDisciplinasAluno(nomeAluno)==0)
+        {cout<<"\n\nAluno sem Disciplina"; getch(); return;}
     cout<<"\nDisciplina: ";
     cin>>indexDisciplina;
     disciplinasdoAluno.visualizarNota(indexDisciplina,indexAluno);
@@ -96,7 +110,8 @@ void AlunoGraduando::consultarDisciplinas()
     system("cls");
     cout<<":: Disciplinas Cadastradas :: \n\n";
     nomeAluno = alunos.getNomeAluno(indexAluno);
-    disciplinasdoAluno.procurarDisciplinasAluno(nomeAluno);
+    if (disciplinasdoAluno.procurarDisciplinasAluno(nomeAluno)==0) 
+        {cout<<"\n\nAluno sem Disciplina"; getch(); return;}
     cout<<"\nVisulizar Informacoes de Disciplina? (1 - Sim, 0 - SAIR): ";
     cin>>resp;
     switch(resp){

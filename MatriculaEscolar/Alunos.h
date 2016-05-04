@@ -23,8 +23,9 @@ public:
     double get1av();
     double get2av();
     double get3av();
-    static void pegarBancoDados();
-    static void alunosCadastrados();
+    
+    virtual void pegarBancoDados()=0;
+    virtual void alunosCadastrados()=0;
     
 private:
 

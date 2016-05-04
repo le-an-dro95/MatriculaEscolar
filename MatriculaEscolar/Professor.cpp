@@ -51,16 +51,27 @@ bool Professor::operator==(const Professor &gente) const
     return false;
 }
 
-void Professor::apresentarMenu()
-{  
+void Professor::logarNoSistema()   
+{
     system("cls");
     if (professores.qtdProfessor()==0) {cout<<"\n\n Nenhum Professor Cadastrado"; getch(); return;}
-    int resp;
-    int op;
-    do{
     cout<<"Numero de Registro: ";
     cin>>indexProfessor;
-    }while(indexProfessor>professores.qtdProfessor());
+    cout<<"Senha: ";
+    cin>>senha;
+    if (indexProfessor<=professores.qtdProfessor() && senha == "123")
+        apresentarMenu();
+    else{
+        cout<<"Numero de Registro e/ou senha Incorreta";
+        getch();
+        return;
+    }
+}
+
+void Professor::apresentarMenu()
+{  
+    int resp;
+    int op;
     do{
     resp = 1;
     system("cls");
@@ -120,15 +131,5 @@ void Professor::lancarNotaAluno()
     cout<<"\n\nAluno: ";
     cin>>indexAluno;
     disciplinasprof.lancarNotadoAluno(indexDisciplina,indexAluno);
-}
-
-void Professor::logar()
-{
-    int indexProfessor;
-    string senha;
-    cout<<"Numero de Registro: ";
-    cin>>indexProfessor;
-    cout<<"Senha: ";
-    cin>>senha;
 }
 

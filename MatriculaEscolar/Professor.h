@@ -2,7 +2,7 @@
 #define PROFESSOR_H
 #include "Professores.h"
 #include "Alunos.h"
-#include "Disciplinas.h"
+#include "DisciplinaGraduacao.h"
 #include "Usuario.h"
 #include <string>
 
@@ -25,15 +25,15 @@ public:
     const Professor &operator=(const Professor &);
  
     virtual void apresentarMenu();
-    static void logar();   
+    virtual void logarNoSistema();   
     
 private:
 
     int indexProfessor;
     string senha;
     
-    Disciplinas disciplinasprof;
-    Alunos alunos;
+    DisciplinaGraduacao disciplinasprof;
+    //Alunos alunos;
     Professores professores;
 
 };

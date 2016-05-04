@@ -22,6 +22,7 @@ public:
     string getGenero();   
     
     virtual void apresentarMenu()=0;
+    virtual void logarNoSistema()=0;
 
     bool operator==(const Usuario &) const;
     const Usuario &operator=(const Usuario &);

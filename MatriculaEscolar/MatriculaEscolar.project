@@ -114,6 +114,14 @@
     <File Name="AlunoGraduando.cpp"/>
     <File Name="AlunoGraduado.h"/>
     <File Name="AlunoGraduado.cpp"/>
+    <File Name="DisciplinaGraduacao.h"/>
+    <File Name="DisciplinaGraduacao.cpp"/>
+    <File Name="DisciplinaPosGraduacao.h"/>
+    <File Name="DisciplinaPosGraduacao.cpp"/>
+    <File Name="AlunosGraduacao.h"/>
+    <File Name="AlunosGraduacao.cpp"/>
+    <File Name="AlunosPosGraduacao.h"/>
+    <File Name="AlunosPosGraduacao.cpp"/>
   </VirtualDirectory>
   <Dependencies Name="Debug"/>
   <Dependencies Name="Release"/>

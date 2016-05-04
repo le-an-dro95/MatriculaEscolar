@@ -8,16 +8,15 @@ using namespace std;
 
 Secretario::Secretario()
 {
-    registro = "NomeUsuario";
+    registro = 123;
     senha= "123";
     senhaMestra = "0L@#";
 }
 
-Secretario::Secretario(string registro, string senhaMestre)
+Secretario::Secretario(int registro, string senha)
 {
     this->registro=registro;
     this->senha=senha;
-    this->senhaMestra=senhaMestra;
 }
 
 Secretario::Secretario(const Secretario &outro):Usuario(outro)
@@ -52,6 +51,23 @@ bool Secretario::operator==(const Secretario &gente) const
     if(Usuario::operator ==(gente) && (registro == gente.registro) && (senha == gente.senha) && (senhaMestra==gente.senhaMestra))
         return true;
     return false;
+}
+
+void Secretario::logarNoSistema()
+{
+    int registro;
+    string senha;
+    cout<<"\n\nNumero de Registro: ";
+    cin>>registro;
+    cout<<"Senha: ";
+    cin>>senha;
+    if (registro==123 && senha == "123")
+        apresentarMenu();
+    else{
+        cout<<"Numero de Registro e/ou senha Incorreta";
+        getch();
+        return;
+    }
 }
 
 void Secretario::apresentarMenu()

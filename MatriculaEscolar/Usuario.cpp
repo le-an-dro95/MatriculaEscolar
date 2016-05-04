@@ -7,14 +7,16 @@
 
 using namespace std;
 
-Usuario::Usuario():dataNascimento(01,01,1900), dadosEndereco("Rua",0,"bairro","cidade","estado")
+Usuario::Usuario()
+:dataNascimento(01,01,1900), dadosEndereco("Rua",0,"bairro","cidade","estado")
 {
     this -> nome= "nome";
     this -> idade= 0;
     this -> genero= "genero";
 }
 
-Usuario::Usuario(const Usuario &p):dataNascimento(p.dataNascimento), dadosEndereco(p.dadosEndereco)
+Usuario::Usuario(const Usuario &p)
+:dataNascimento(p.dataNascimento), dadosEndereco(p.dadosEndereco)
 {
     this->nome = p.nome; 
     this->idade = p.idade;
